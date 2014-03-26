@@ -24,6 +24,10 @@ Slack.prototype.send = function(message,cb) {
 		"username":message.username
 	};
 
+	if (message.attachments && Array.isArray(message.attachments)) {
+		options.attachments = message.attachments;
+	}
+	
 	var requestParams = {
 		url:url,
 		body:JSON.stringify(options)
